@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mustapha Latif | Software Engineer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111827;
+      --accent: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --border: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f172a, var(--bg));
+      color: var(--text);
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 8%;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav h1 {
+      color: var(--accent);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10%;
+    }
+
+    .hero-text {
+      text-align: center;
+    }
+
+    .hero-text h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-text h2 span {
+      color: var(--accent);
+    }
+
+    .typing {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.4rem;
+      height: 32px;
+      display: inline-block;
+    }
+
+    .hero-text p {
+      margin-top: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #020617;
+    }
+
+    section {
+      padding: 6rem 10%;
+    }
+
+    section h3 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill {
+      background: linear-gradient(145deg, #0b1225, #020617);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: 0.4s;
+      border: 1px solid var(--border);
+    }
+
+    .skill:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .skill h4 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-grid {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      border-color: var(--accent);
+    }
+
+    .project-image-dual {
+      display: flex;
+      height: 250px;
+      width: 100%;
+      background: #000;
+      gap: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-image-dual img {
+      flex: 1;
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover .project-image-dual img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .link {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: #020617;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>Mustapha Latif</h1>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Project</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h2>Hi, I'm <span>Mustapha Latif</span></h2>
+    <div class="typing" id="typing"></div>
+    <p>
+      Software Engineer with strong experience in programming, web development, databases, Linux systems,
+      and networking fundamentals. Focused on clean code and scalable solutions.
+    </p>
+    <div class="hero-buttons">
+      <a href="CV.pdf" download class="btn btn-primary">Download CV</a>
+      <a href="#projects" class="btn btn-outline">View Project</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h3>Technical Skills</h3>
+  <div class="skills-grid">
+    <div class="skill"><h4>Java</h4><p>OOP, backend, problem solving</p></div>
+    <div class="skill"><h4>C++</h4><p>Algorithms & performance</p></div>
+    <div class="skill"><h4>Web</h4><p>HTML, CSS, JavaScript</p></div>
+    <div class="skill"><h4>PHP & SQL</h4><p>Dynamic apps & databases</p></div>
+    <div class="skill"><h4>Linux</h4><p>Ubuntu, CLI, system basics</p></div>
+    <div class="skill"><h4>Networking</h4><p>TCP/IP, basic routing</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h3>Featured Project</h3>
+  <div class="projects-grid">
+    
+    <div class="project-card">
+      <div class="project-image-dual">
+        <!-- Left Image: Login Screen -->
+        <img src="https://z-cdn-media.chatglm.cn/files/12a378c3-0aba-4da7-b1d7-31b67b814a81.png?auth_key=1870040367-5d0999bade164b448f500c8d24d3e92e-0-7620bd9b3e4ab59ff6b33fcffbf521cc" alt="Password Manager Login">
+        <!-- Right Image: Dashboard -->
+        <img src="https://z-cdn-media.chatglm.cn/files/0c0d655f-d869-413e-bde4-28432f661d8e.png?auth_key=1870040367-4aefd7b08d41400e8230b70492072187-0-e5caa1bdcefcfce0c8065ed3a1986e1b" alt="Password Manager Dashboard">
+      </div>
+      <div class="project-content">
+        <h4 class="project-title">SecurePass Manager</h4>
+        <p class="project-desc">A secure, client-side password manager built for efficient credential management. Features a dark-themed login interface and a user-friendly dashboard for adding, viewing, and managing encrypted passwords stored locally.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Encryption</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/stof-1/DarkpasswordManager" target="_blank" class="link">View Code &rarr;</a>
+          <a href="#" target="_blank" class="link">Live Demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="contact" class="contact">
+  <h3>Contact Me</h3>
+  <p>Email: <a href="mailto:mustapha.latif2001@gmail.com" style="color: var(--accent);">mustapha.latif2001@gmail.com</a></p>
+  <p>GitHub: <a href="https://github.com/stof-1" target="_blank" style="color: var(--accent);">github.com/stof-1</a></p>
+</section>
+
+<footer>
+  © 2026 Mustapha Latif · Professional Portfolio
+</footer>
+
+<script>
+  const text = [
+    "Software Engineer",
+    "Web Developer",
+    "Java & C++ Programmer",
+    "Linux Enthusiast"
+  ];
+
+  let index = 0;
+  let char = 0;
+  const typing = document.getElementById("typing");
+
+  function typeEffect() {
+    if (char < text[index].length) {
+      typing.textContent += text[index].charAt(char);
+      char++;
+      setTimeout(typeEffect, 100);
+    } else {
+      setTimeout(eraseEffect, 2000);
+    }
+  }
+
+  function eraseEffect() {
+    if (char > 0) {
+      typing.textContent = text[index].substring(0, char - 1);
+      char--;
+      setTimeout(eraseEffect, 60);
+    } else {
+      index = (index + 1) % text.length;
+      setTimeout(typeEffect, 500);
+    }
+  }
+  typeEffect();
+</script>
+</body>
+</html>
